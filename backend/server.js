@@ -82,5 +82,5 @@ app.delete('/api/favorites/:id', async (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on https://week-7-devops-deployment-assignment-kf00.onrender.com/`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
