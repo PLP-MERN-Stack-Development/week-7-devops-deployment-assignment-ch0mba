@@ -1,0 +1,61 @@
+name: MERN App CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frontend
+        uses: actions/checkout@v3
+        with:
+          path: frontend
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Deploy frontend via Vercel CLI
+        uses: amondnet/vercel-action@v1
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-project-id: YOUR_VERCEL_PROJECT_ID
+          vercel-org-id: YOUR_VERCEL_ORG_ID
+          github-comment: false
+
+  deploy-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout backend
+        uses: actions/checkout@v3
+        with:
+          path: backend
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Lint backend
+        run: |
+          cd backend
+          npm run lint
