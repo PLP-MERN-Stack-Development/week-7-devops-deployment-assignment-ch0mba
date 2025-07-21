@@ -17,7 +17,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'https://week-7-devops-deployment-assignment-kf00.onrender.com',
+      '/api': 'http://localhost:5000',
     },
   },
 });

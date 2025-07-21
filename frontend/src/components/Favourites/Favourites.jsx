@@ -4,8 +4,10 @@ import axios from 'axios';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
+
 export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const fetchFavorites = async () => {
     try {
@@ -16,9 +18,10 @@ export default function Favorites() {
     }
   };
 
-  const removeFavorite = async (bookId) => {
+  const removeFavorite = async () => {
     try {
-      await axios.delete(`/api/favorites/${bookId}`);
+      
+      const res = await axios.get(`${API_URL}/api/books?q=${query}`);
       fetchFavorites(); // Refresh list
     } catch (error) {
       console.error('Error removing favorite:', error.message);

@@ -5,13 +5,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 
+
 export default function BookSearch() {
   const [query, setQuery] = useState('');
   const [books, setBooks] = useState([]);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const searchBooks = async () => {
     try {
-      const res = await axios.get(`/api/books?q=${query}`);
+      
+      const res = await axios.get(`${API_URL}/api/books?q=${query}`);
       setBooks(res.data.items || []);
     } catch (error) {
       console.error('Error fetching books:', error.message);
