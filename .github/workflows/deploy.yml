@@ -32,9 +32,9 @@ jobs:
       - name: Deploy frontend via Vercel CLI
         uses: amondnet/vercel-action@v1
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-project-id: YOUR_VERCEL_PROJECT_ID
-          vercel-org-id: YOUR_VERCEL_ORG_ID
+          vercel-token: ${{ iOWqopCS0GQVM1WBGUQz0Y2z }}
+          vercel-project-id: 4nDhdf6nL
+          vercel-org-id: 4nDhdf6nL
           github-comment: false
 
   deploy-backend:
